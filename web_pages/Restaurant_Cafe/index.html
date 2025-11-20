@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bella Cucina - Authentic Italian Restaurant. Award-winning cuisine, cozy atmosphere, and unforgettable dining experience.">
+    <meta name="keywords" content="restaurant, Italian food, dining, reservations, café, pizza, pasta">
+    <meta name="author" content="Rodrigo Porcel">
+    <title>Bella Cucina - Authentic Italian Restaurant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-utensils"></i> Bella Cucina
+            </div>
+            <ul class="nav-links">
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#reservations">Reservations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Bella Cucina</h1>
+            <p class="tagline">Authentic Italian Dining Experience</p>
+            <p class="description">Savor the taste of Italy with our carefully crafted dishes made from the finest ingredients</p>
+            <button class="cta-btn" onclick="scrollToSection('reservations')">Reserve a Table</button>
+        </div>
+    </section>
+
+    <!-- Quick Info Section -->
+    <section class="quick-info">
+        <div class="container">
+            <div class="info-box">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Location</h3>
+                <p>123 Main Street<br>Downtown, City 12345</p>
+            </div>
+            <div class="info-box">
+                <i class="fas fa-clock"></i>
+                <h3>Hours</h3>
+                <p>Mon-Thu: 11am - 10pm<br>Fri-Sat: 11am - 11pm<br>Sun: 12pm - 10pm</p>
+            </div>
+            <div class="info-box">
+                <i class="fas fa-phone"></i>
+                <h3>Call Us</h3>
+                <p><a href="tel:+1234567890">(123) 456-7890</a></p>
+            </div>
+            <div class="info-box">
+                <i class="fas fa-globe"></i>
+                <h3>Online</h3>
+                <p><a href="mailto:info@bellacucina.com">info@bellacucina.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <h2>Our Menu</h2>
+            <p class="section-subtitle">Discover our signature dishes</p>
+
+            <div class="menu-tabs">
+                <button class="menu-tab active" onclick="switchMenu('appetizers')">Appetizers</button>
+                <button class="menu-tab" onclick="switchMenu('mains')">Main Courses</button>
+                <button class="menu-tab" onclick="switchMenu('pasta')">Pasta</button>
+                <button class="menu-tab" onclick="switchMenu('desserts')">Desserts</button>
+                <button class="menu-tab" onclick="switchMenu('drinks')">Beverages</button>
+            </div>
+
+            <div class="menu-grid" id="menuGrid">
+                <!-- Menu items will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Bella Cucina</h2>
+                    <p>Founded in 2010, Bella Cucina has been a beloved destination for authentic Italian cuisine. Our chef, Marco Rossi, brings over 20 years of experience from Italy to create dishes that transport you straight to the heart of Italy.</p>
+                    <p>We believe in using only the finest, freshest ingredients sourced locally whenever possible. Every dish is crafted with passion and attention to detail, ensuring an unforgettable dining experience.</p>
+                    <p>Whether you're celebrating a special occasion or simply looking for a delicious meal, Bella Cucina welcomes you to our table.</p>
+                    
+                    <div class="awards">
+                        <div class="award">
+                            <i class="fas fa-award"></i>
+                            <span>Best Italian Restaurant 2023</span>
+                        </div>
+                        <div class="award">
+                            <i class="fas fa-star"></i>
+                            <span>4.8/5 Stars (500+ Reviews)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <i class="fas fa-image"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservations Section -->
+    <section class="reservations" id="reservations">
+        <div class="container">
+            <h2>Make a Reservation</h2>
+            <p class="section-subtitle">Book your table now</p>
+
+            <div class="reservation-wrapper">
+                <form class="reservation-form" id="reservationForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" placeholder="Full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" placeholder="(123) 456-7890" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Number of Guests</label>
+                            <select required>
+                                <option value="">Select guests</option>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5">5 Guests</option>
+                                <option value="6">6 Guests</option>
+                                <option value="7+">7+ Guests</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Time</label>
+                            <select required>
+                                <option value="">Select time</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="11:30">11:30 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="12:30">12:30 PM</option>
+                                <option value="18:00">6:00 PM</option>
+                                <option value="18:30">6:30 PM</option>
+                                <option value="19:00">7:00 PM</option>
+                                <option value="19:30">7:30 PM</option>
+                                <option value="20:00">8:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Special Requests</label>
+                        <textarea placeholder="Any dietary restrictions or special requests..." rows="3"></textarea>
+                    </div>
+
+                    <button type="submit" class="cta-btn">Reserve Table</button>
+                </form>
+
+                <div class="reservation-info">
+                    <h3>Reservation Policy</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Reserve your table in advance</li>
+                        <li><i class="fas fa-check"></i> Confirmation sent via email</li>
+                        <li><i class="fas fa-check"></i> Cancel up to 24 hours</li>
+                        <li><i class="fas fa-check"></i> Groups of 8+ require deposit</li>
+                        <li><i class="fas fa-check"></i> Private events available</li>
+                    </ul>
+
+                    <h3 style="margin-top: 2rem;">Contact Info</h3>
+                    <p><strong>Phone:</strong> <a href="tel:+1234567890">(123) 456-7890</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:info@bellacucina.com">info@bellacucina.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Guests Say</h2>
+            <p class="section-subtitle">Real reviews from our valued customers</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The best Italian food I've had outside of Italy! The pasta was perfectly cooked and the sauce was incredible."</p>
+                    <div class="reviewer">
+                        <i class="fas fa-user-circle"></i>
+                        <div>
+                            <p class="name">Jennifer Martinez</p>
+                            <p class="title">Regular Customer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Perfect ambiance, excellent service, and delicious food. Celebrated our anniversary here and it was unforgettable!"</p>
+                    <div class="reviewer">
+                        <i class="fas fa-user-circle"></i>
+                        <div>
+                            <p class="name">David Thompson</p>
+                            <p class="title">Anniversary Celebration</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Every time I bring clients here, they're amazed. The food quality and presentation are impeccable!"</p>
+                    <div class="reviewer">
+                        <i class="fas fa-user-circle"></i>
+                        <div>
+                            <p class="name">Sarah Johnson</p>
+                            <p class="title">Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Visit Us</h2>
+            <p class="section-subtitle">We're located in the heart of downtown</p>
+
+            <div class="contact-wrapper">
+                <div class="contact-map">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <p>Map will be displayed here</p>
+                </div>
+
+                <div class="contact-details">
+                    <div class="detail-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>123 Main Street<br>Downtown, City 12345</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p><a href="tel:+1234567890">(123) 456-7890</a></p>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:info@bellacucina.com">info@bellacucina.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Hours</h4>
+                            <p>Mon-Thu: 11am - 10pm<br>Fri-Sat: 11am - 11pm<br>Sun: 12pm - 10pm</p>
+                        </div>
+                    </div>
+
+                    <div class="social-section">
+                        <h4>Follow Us</h4>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Bella Cucina Restaurant. All rights reserved.</p>
+            <p>Crafted with <i class="fas fa-heart"></i> by Rodrigo Porcel</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

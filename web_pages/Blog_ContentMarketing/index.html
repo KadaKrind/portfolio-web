@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Digital Marketing Hub - Blog posts, tips, and strategies for growing your online business">
+    <meta name="keywords" content="digital marketing, SEO, content marketing, blog, marketing tips, online business">
+    <meta name="author" content="Rodrigo Porcel">
+    <title>Digital Marketing Hub - Expert Tips & Strategies</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Marketing Hub</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#newsletter">Newsletter</a></li>
+            </ul>
+            <div class="search-toggle" onclick="toggleSearch()">🔍</div>
+        </nav>
+        
+        <!-- Search Bar -->
+        <div class="search-bar" id="searchBar">
+            <input type="text" id="searchInput" placeholder="Search articles..." onkeyup="searchArticles()">
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Master Digital Marketing</h1>
+                <p>Discover proven strategies to grow your online business and reach your target audience</p>
+                <button class="cta-btn" onclick="scrollToSection('blog')">Read Our Latest Articles</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="featured">
+        <div class="container">
+            <h2>Featured Article</h2>
+            <div class="featured-article">
+                <div class="featured-image">📈</div>
+                <div class="featured-content">
+                    <span class="category-badge">SEO</span>
+                    <h3>10 Essential SEO Tips to Boost Your Rankings in 2025</h3>
+                    <p>Learn the latest SEO techniques that will help your website rank higher on search engines and drive more organic traffic to your business.</p>
+                    <div class="article-meta">
+                        <span>📅 Dec 15, 2024</span>
+                        <span>👤 Rodrigo Porcel</span>
+                        <span>⏱️ 8 min read</span>
+                    </div>
+                    <a href="#" class="read-more">Read Full Article →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2>Browse by Category</h2>
+            <div class="categories-grid">
+                <div class="category-card" onclick="filterByCategory('seo')">
+                    <div class="category-icon">🔍</div>
+                    <h3>SEO</h3>
+                    <p>5 Articles</p>
+                </div>
+                <div class="category-card" onclick="filterByCategory('content')">
+                    <div class="category-icon">✍️</div>
+                    <h3>Content Marketing</h3>
+                    <p>6 Articles</p>
+                </div>
+                <div class="category-card" onclick="filterByCategory('social')">
+                    <div class="category-icon">📱</div>
+                    <h3>Social Media</h3>
+                    <p>4 Articles</p>
+                </div>
+                <div class="category-card" onclick="filterByCategory('email')">
+                    <div class="category-icon">📧</div>
+                    <h3>Email Marketing</h3>
+                    <p>4 Articles</p>
+                </div>
+                <div class="category-card" onclick="filterByCategory('analytics')">
+                    <div class="category-icon">📊</div>
+                    <h3>Analytics</h3>
+                    <p>3 Articles</p>
+                </div>
+                <div class="category-card" onclick="filterByCategory('all')">
+                    <div class="category-icon">📚</div>
+                    <h3>All Articles</h3>
+                    <p>22 Articles</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog" id="blog">
+        <div class="container">
+            <h2>Latest Articles</h2>
+            
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterByCategory('all')">All</button>
+                <button class="filter-btn" onclick="filterByCategory('seo')">SEO</button>
+                <button class="filter-btn" onclick="filterByCategory('content')">Content</button>
+                <button class="filter-btn" onclick="filterByCategory('social')">Social Media</button>
+                <button class="filter-btn" onclick="filterByCategory('email')">Email</button>
+                <button class="filter-btn" onclick="filterByCategory('analytics')">Analytics</button>
+            </div>
+
+            <!-- Articles Grid -->
+            <div class="articles-grid" id="articlesGrid">
+                <!-- Articles will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter" id="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get the latest marketing tips and strategies delivered to your inbox weekly</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Enter your email..." required>
+                    <button type="submit" class="subscribe-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2>About This Blog</h2>
+            <p>Welcome to Digital Marketing Hub, your go-to resource for digital marketing strategies, tips, and best practices. Our articles cover everything from SEO and content marketing to social media and email campaigns. Whether you're a beginner or an experienced marketer, you'll find valuable insights to help grow your online presence.</p>
+            <div class="about-stats">
+                <div class="stat">
+                    <h3>22+</h3>
+                    <p>Articles Published</p>
+                </div>
+                <div class="stat">
+                    <h3>5</h3>
+                    <p>Categories</p>
+                </div>
+                <div class="stat">
+                    <h3>10K+</h3>
+                    <p>Monthly Readers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Marketing Hub</h3>
+                    <p>Your trusted source for digital marketing knowledge and strategies.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#newsletter">Newsletter</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#" onclick="filterByCategory('seo')">SEO</a></li>
+                        <li><a href="#" onclick="filterByCategory('content')">Content Marketing</a></li>
+                        <li><a href="#" onclick="filterByCategory('social')">Social Media</a></li>
+                        <li><a href="#" onclick="filterByCategory('email')">Email Marketing</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Digital Marketing Hub. All rights reserved. | Created by Rodrigo Porcel</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

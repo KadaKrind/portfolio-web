@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CustomizeHub - Interactive 3D product configurator. Design your perfect product in real-time with our innovative visualization tool.">
+    <meta name="keywords" content="3D configurator, product customization, interactive design, real-time preview">
+    <meta name="author" content="Rodrigo Porcel">
+    <title>CustomizeHub - 3D Product Configurator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-cube"></i> CustomizeHub
+            </div>
+            <div class="nav-center">
+                <h1>Interactive 3D Product Configurator</h1>
+            </div>
+            <div class="nav-right">
+                <button class="help-btn" onclick="toggleHelp()"><i class="fas fa-question-circle"></i> Help</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Left Panel: 3D Viewer -->
+        <section class="viewer-panel">
+            <div class="viewer-header">
+                <h2>3D Preview</h2>
+                <div class="viewer-controls">
+                    <button class="control-btn" onclick="resetView()" title="Reset View">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                    <button class="control-btn" onclick="fullscreenView()" title="Fullscreen">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="viewer-3d" id="viewer3D">
+                <canvas id="canvas3D"></canvas>
+                <div class="loading-spinner" id="loadingSpinner">
+                    <div class="spinner"></div>
+                    <p>Loading 3D Model...</p>
+                </div>
+            </div>
+            <div class="viewer-info">
+                <p><i class="fas fa-mouse"></i> Drag to rotate | Scroll to zoom | Right-click to pan</p>
+            </div>
+        </section>
+
+        <!-- Right Panel: Customization Controls -->
+        <section class="control-panel">
+            <div class="control-header">
+                <h2>Customize Your Product</h2>
+                <button class="save-config-btn" onclick="saveConfiguration()">
+                    <i class="fas fa-download"></i> Save Config
+                </button>
+            </div>
+
+            <div class="control-tabs">
+                <button class="tab-btn active" onclick="switchTab('color')">
+                    <i class="fas fa-palette"></i> Colors
+                </button>
+                <button class="tab-btn" onclick="switchTab('material')">
+                    <i class="fas fa-cube"></i> Materials
+                </button>
+                <button class="tab-btn" onclick="switchTab('parts')">
+                    <i class="fas fa-puzzle-piece"></i> Parts
+                </button>
+                <button class="tab-btn" onclick="switchTab('advanced')">
+                    <i class="fas fa-sliders-h"></i> Advanced
+                </button>
+            </div>
+
+            <!-- Color Tab -->
+            <div class="tab-content active" id="tab-color">
+                <div class="control-group">
+                    <label>Body Color</label>
+                    <div class="color-picker-group">
+                        <input type="color" id="bodyColor" value="#3498db" onchange="updateBodyColor(this.value)">
+                        <span class="color-name" id="bodyColorName">Sky Blue</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>Accent Color</label>
+                    <div class="color-picker-group">
+                        <input type="color" id="accentColor" value="#e74c3c" onchange="updateAccentColor(this.value)">
+                        <span class="color-name" id="accentColorName">Red</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>Quick Colors</label>
+                    <div class="quick-colors">
+                        <button class="quick-color" style="background: #000;" onclick="setQuickColor('#000', 'Black')"></button>
+                        <button class="quick-color" style="background: #fff; border: 1px solid #ddd;" onclick="setQuickColor('#fff', 'White')"></button>
+                        <button class="quick-color" style="background: #34495e;" onclick="setQuickColor('#34495e', 'Dark Gray')"></button>
+                        <button class="quick-color" style="background: #e74c3c;" onclick="setQuickColor('#e74c3c', 'Red')"></button>
+                        <button class="quick-color" style="background: #3498db;" onclick="setQuickColor('#3498db', 'Blue')"></button>
+                        <button class="quick-color" style="background: #2ecc71;" onclick="setQuickColor('#2ecc71', 'Green')"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Material Tab -->
+            <div class="tab-content" id="tab-material">
+                <div class="control-group">
+                    <label>Material Type</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="material" value="plastic" checked onchange="updateMaterial('plastic')">
+                            <span>Plastic (Matte)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="material" value="metallic" onchange="updateMaterial('metallic')">
+                            <span>Metallic (Glossy)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="material" value="rubber" onchange="updateMaterial('rubber')">
+                            <span>Rubber (Textured)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="material" value="carbon" onchange="updateMaterial('carbon')">
+                            <span>Carbon Fiber</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>Reflectivity</label>
+                    <input type="range" min="0" max="100" value="30" onchange="updateReflectivity(this.value)" class="slider">
+                    <div class="slider-labels">
+                        <span>Matte</span>
+                        <span id="reflectivityValue">30%</span>
+                        <span>Glossy</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parts Tab -->
+            <div class="tab-content" id="tab-parts">
+                <div class="control-group">
+                    <label>Add Components</label>
+                    <div class="parts-list">
+                        <button class="part-btn" onclick="togglePart('handle')">
+                            <i class="fas fa-plus"></i> Add Handle
+                        </button>
+                        <button class="part-btn" onclick="togglePart('wheels')">
+                            <i class="fas fa-plus"></i> Add Wheels
+                        </button>
+                        <button class="part-btn" onclick="togglePart('stripe')">
+                            <i class="fas fa-plus"></i> Add Racing Stripe
+                        </button>
+                        <button class="part-btn" onclick="togglePart('lights')">
+                            <i class="fas fa-plus"></i> Add LED Lights
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Tab -->
+            <div class="tab-content" id="tab-advanced">
+                <div class="control-group">
+                    <label>Scale (Size)</label>
+                    <input type="range" min="0.5" max="2" step="0.1" value="1" onchange="updateScale(this.value)" class="slider">
+                    <div class="slider-labels">
+                        <span>50%</span>
+                        <span id="scaleValue">100%</span>
+                        <span>200%</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>Rotation</label>
+                    <div class="rotation-controls">
+                        <button onclick="rotateModel(10, 'x')"><i class="fas fa-arrow-up"></i></button>
+                        <button onclick="rotateModel(-10, 'x')"><i class="fas fa-arrow-down"></i></button>
+                        <button onclick="rotateModel(10, 'y')"><i class="fas fa-arrow-right"></i></button>
+                        <button onclick="rotateModel(-10, 'y')"><i class="fas fa-arrow-left"></i></button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>Lighting</label>
+                    <input type="range" min="0.5" max="2" step="0.1" value="1" onchange="updateLighting(this.value)" class="slider">
+                    <div class="slider-labels">
+                        <span>Dark</span>
+                        <span id="lightingValue">1x</span>
+                        <span>Bright</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary -->
+            <div class="config-summary">
+                <h3>Your Configuration</h3>
+                <div class="summary-item">
+                    <span>Body Color:</span>
+                    <span id="summaryColor">Sky Blue</span>
+                </div>
+                <div class="summary-item">
+                    <span>Material:</span>
+                    <span id="summaryMaterial">Plastic</span>
+                </div>
+                <div class="summary-item">
+                    <span>Components:</span>
+                    <span id="summaryParts">None added</span>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn-primary" onclick="orderNow()">
+                    <i class="fas fa-shopping-cart"></i> Order Now
+                </button>
+                <button class="btn-secondary" onclick="shareConfig()">
+                    <i class="fas fa-share-alt"></i> Share
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Help Modal -->
+    <div class="help-modal" id="helpModal">
+        <div class="help-content">
+            <button class="close-help" onclick="toggleHelp()">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>How to Use 3D Configurator</h2>
+            <div class="help-section">
+                <h3><i class="fas fa-mouse"></i> Navigation</h3>
+                <ul>
+                    <li><strong>Rotate:</strong> Click and drag on the 3D model</li>
+                    <li><strong>Zoom:</strong> Use mouse wheel or pinch on touchpad</li>
+                    <li><strong>Pan:</strong> Right-click and drag</li>
+                </ul>
+            </div>
+            <div class="help-section">
+                <h3><i class="fas fa-palette"></i> Customization</h3>
+                <ul>
+                    <li>Use the <strong>Colors tab</strong> to change body and accent colors</li>
+                    <li>Switch <strong>Materials</strong> to change appearance and reflectivity</li>
+                    <li>Add <strong>Components</strong> to enhance your product</li>
+                    <li>Use <strong>Advanced options</strong> for fine-tuning</li>
+                </ul>
+            </div>
+            <div class="help-section">
+                <h3><i class="fas fa-cloud-download-alt"></i> Save & Share</h3>
+                <ul>
+                    <li>Click <strong>Save Config</strong> to download your configuration</li>
+                    <li>Use <strong>Share</strong> to send your design to others</li>
+                    <li>Click <strong>Order Now</strong> to proceed with purchase</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

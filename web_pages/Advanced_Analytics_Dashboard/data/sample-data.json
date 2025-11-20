@@ -1,0 +1,52 @@
+[
+  {
+    "date": "2024-11-01",
+    "revenue": 85000,
+    "users": 52000,
+    "conversion": 3.2,
+    "avgOrder": 145.50,
+    "sessions": 58000,
+    "events": 125000,
+    "responseTime": 245
+  },
+  {
+    "date": "2024-11-02",
+    "revenue": 92000,
+    "users": 58000,
+    "conversion": 3.5,
+    "avgOrder": 152.30,
+    "sessions": 65000,
+    "events": 142000,
+    "responseTime": 230
+  },
+  {
+    "date": "2024-11-03",
+    "revenue": 78000,
+    "users": 49000,
+    "conversion": 2.9,
+    "avgOrder": 138.20,
+    "sessions": 54000,
+    "events": 108000,
+    "responseTime": 265
+  },
+  {
+    "date": "2024-11-04",
+    "revenue": 105000,
+    "users": 62000,
+    "conversion": 3.8,
+    "avgOrder": 165.40,
+    "sessions": 71000,
+    "events": 165000,
+    "responseTime": 210
+  },
+  {
+    "date": "2024-11-05",
+    "revenue": 98000,
+    "users": 57000,
+    "conversion": 3.6,
+    "avgOrder": 158.70,
+    "sessions": 68000,
+    "events": 148000,
+    "responseTime": 225
+  }
+]

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premier Properties - Your trusted real estate partner. Find your dream home with our comprehensive listings and expert agents.">
+    <meta name="keywords" content="real estate, properties, homes, apartments, houses for sale, real estate agent">
+    <meta name="author" content="Rodrigo Porcel">
+    <title>Premier Properties - Find Your Dream Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-home"></i> Premier Properties
+            </div>
+            <ul class="nav-links">
+                <li><a href="#properties">Properties</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#agents">Agents</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Find Your Dream Home</h1>
+                <p>Discover exceptional properties in the best neighborhoods</p>
+                <form class="search-form" onsubmit="handleSearch(event)">
+                    <input type="text" placeholder="Enter location or property type..." required>
+                    <select required>
+                        <option value="">Property Type</option>
+                        <option value="house">House</option>
+                        <option value="apartment">Apartment</option>
+                        <option value="condo">Condo</option>
+                        <option value="commercial">Commercial</option>
+                    </select>
+                    <button type="submit" class="search-btn"><i class="fas fa-search"></i> Search</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Properties Section -->
+    <section class="featured" id="properties">
+        <div class="container">
+            <h2>Featured Properties</h2>
+            <p class="section-subtitle">Handpicked listings from our latest collection</p>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterProperties('all')">All</button>
+                <button class="filter-btn" onclick="filterProperties('house')">Houses</button>
+                <button class="filter-btn" onclick="filterProperties('apartment')">Apartments</button>
+                <button class="filter-btn" onclick="filterProperties('condo')">Condos</button>
+            </div>
+
+            <div class="properties-grid" id="propertiesGrid">
+                <!-- Properties will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stat-card">
+                <i class="fas fa-home"></i>
+                <h3>2,500+</h3>
+                <p>Properties Listed</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-users"></i>
+                <h3>5,000+</h3>
+                <p>Happy Clients</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-handshake"></i>
+                <h3>$2.5B</h3>
+                <p>Total Sales</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-award"></i>
+                <h3>20+</h3>
+                <p>Awards Won</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Premier Properties</h2>
+                    <p>With over 15 years of experience in the real estate industry, Premier Properties has become a trusted name in helping clients find their dream homes and investment properties.</p>
+                    <p>Our team of expert agents is committed to providing exceptional service, personalized attention, and deep market knowledge to ensure successful transactions.</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Expert Market Knowledge</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Professional Photography</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Virtual Tours</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>24/7 Support</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <i class="fas fa-city"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agents Section -->
+    <section class="agents" id="agents">
+        <div class="container">
+            <h2>Our Top Agents</h2>
+            <p class="section-subtitle">Expert professionals ready to help you</p>
+
+            <div class="agents-grid">
+                <div class="agent-card">
+                    <div class="agent-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Sarah Anderson</h3>
+                    <p class="agent-title">Senior Real Estate Agent</p>
+                    <p class="agent-bio">15+ years experience in residential properties and market analysis.</p>
+                    <div class="agent-stats">
+                        <span><i class="fas fa-star"></i> 4.9/5</span>
+                        <span><i class="fas fa-home"></i> 250+ Sales</span>
+                    </div>
+                    <div class="agent-contact">
+                        <a href="tel:+1234567890"><i class="fas fa-phone"></i></a>
+                        <a href="mailto:sarah@premier.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div class="agent-card">
+                    <div class="agent-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>James Mitchell</h3>
+                    <p class="agent-title">Commercial Real Estate Specialist</p>
+                    <p class="agent-bio">Expert in commercial properties and investment opportunities.</p>
+                    <div class="agent-stats">
+                        <span><i class="fas fa-star"></i> 4.8/5</span>
+                        <span><i class="fas fa-building"></i> 180+ Sales</span>
+                    </div>
+                    <div class="agent-contact">
+                        <a href="tel:+1234567890"><i class="fas fa-phone"></i></a>
+                        <a href="mailto:james@premier.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div class="agent-card">
+                    <div class="agent-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Maria Garcia</h3>
+                    <p class="agent-title">Luxury Properties Agent</p>
+                    <p class="agent-bio">Specializing in luxury homes and high-end properties.</p>
+                    <div class="agent-stats">
+                        <span><i class="fas fa-star"></i> 5.0/5</span>
+                        <span><i class="fas fa-gem"></i> 320+ Sales</span>
+                    </div>
+                    <div class="agent-contact">
+                        <a href="tel:+1234567890"><i class="fas fa-phone"></i></a>
+                        <a href="mailto:maria@premier.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <div class="agent-card">
+                    <div class="agent-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>David Chen</h3>
+                    <p class="agent-title">Investment Property Specialist</p>
+                    <p class="agent-bio">Helping investors build profitable real estate portfolios.</p>
+                    <div class="agent-stats">
+                        <span><i class="fas fa-star"></i> 4.9/5</span>
+                        <span><i class="fas fa-chart-line"></i> 210+ Sales</span>
+                    </div>
+                    <div class="agent-contact">
+                        <a href="tel:+1234567890"><i class="fas fa-phone"></i></a>
+                        <a href="mailto:david@premier.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <p class="section-subtitle">Comprehensive real estate solutions</p>
+
+            <div class="services-grid">
+                <div class="service-item">
+                    <i class="fas fa-search-plus"></i>
+                    <h3>Property Search</h3>
+                    <p>Browse our extensive database of properties with advanced search filters.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-camera"></i>
+                    <h3>Virtual Tours</h3>
+                    <p>Explore properties with 360° virtual tours and high-quality photos.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-file-contract"></i>
+                    <h3>Legal Support</h3>
+                    <p>Complete assistance with contracts, paperwork, and legal procedures.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Financing Help</h3>
+                    <p>Expert guidance on mortgages and financing options.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-home"></i>
+                    <h3>Home Valuation</h3>
+                    <p>Get accurate property valuations and market analysis.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Property Management</h3>
+                    <p>Professional management services for rental properties.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <p class="section-subtitle">Let's help you find your perfect property</p>
+
+            <div class="contact-wrapper">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="your@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" placeholder="(123) 456-7890">
+                    </div>
+
+                    <div class="form-group">
+                        <label>I'm Interested In</label>
+                        <select required>
+                            <option value="">Select option</option>
+                            <option value="buying">Buying a Property</option>
+                            <option value="selling">Selling a Property</option>
+                            <option value="renting">Renting a Property</option>
+                            <option value="investing">Investment Opportunity</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea placeholder="Tell us more about your needs..." rows="4" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="info-box">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>123 Real Estate Plaza<br>Downtown, City 12345</p>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p><a href="tel:+1234567890">(123) 456-7890</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:info@premier.com">info@premier.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Hours</h4>
+                            <p>Mon-Fri: 9am - 6pm<br>Sat: 10am - 4pm<br>Sun: Closed</p>
+                        </div>
+                    </div>
+
+                    <div class="social-section">
+                        <h4>Follow Us</h4>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-home"></i> Premier Properties</h3>
+                    <p>Your trusted partner in finding the perfect property.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#properties">Properties</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#agents">Agents</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Property Types</h3>
+                    <ul>
+                        <li><a href="#">Houses</a></li>
+                        <li><a href="#">Apartments</a></li>
+                        <li><a href="#">Condos</a></li>
+                        <li><a href="#">Commercial</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Premier Properties. All rights reserved. | Created by Rodrigo Porcel</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

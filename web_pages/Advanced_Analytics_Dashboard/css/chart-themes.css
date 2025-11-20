@@ -1,0 +1,75 @@
+/* ApexCharts Custom Themes */
+:root {
+    --apexcharts-text-primary: #e2e8f0;
+    --apexcharts-text-secondary: #a0aec0;
+    --apexcharts-bg-primary: #1a1f36;
+    --apexcharts-tooltip-bg: #16213e;
+    --apexcharts-grid-border-color: #2d3748;
+}
+
+.apexcharts-text {
+    fill: var(--apexcharts-text-primary) !important;
+}
+
+.apexcharts-xaxis-label text {
+    fill: var(--apexcharts-text-secondary) !important;
+}
+
+.apexcharts-yaxis-label text {
+    fill: var(--apexcharts-text-secondary) !important;
+}
+
+.apexcharts-grid-svg line {
+    stroke: var(--apexcharts-grid-border-color) !important;
+}
+
+.apexcharts-tooltip {
+    background: var(--apexcharts-tooltip-bg) !important;
+    border: 1px solid #00d4ff !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.apexcharts-legend {
+    color: var(--apexcharts-text-primary) !important;
+}
+
+/* Chart.js Customization */
+.chart-legend li span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    margin-right: 8px;
+    background: var(--primary-color);
+}
+
+/* Heatmap Styles */
+.heatmap-container {
+    padding: 1rem;
+}
+
+.heatmap-row {
+    display: flex;
+    margin-bottom: 5px;
+    gap: 5px;
+}
+
+.heatmap-cell {
+    width: 25px;
+    height: 25px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.heatmap-cell:hover {
+    transform: scale(1.2);
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+}
+
+.heatmap-intensity-1 { background: rgba(0, 212, 255, 0.2); }
+.heatmap-intensity-2 { background: rgba(0, 212, 255, 0.4); }
+.heatmap-intensity-3 { background: rgba(0, 212, 255, 0.6); }
+.heatmap-intensity-4 { background: rgba(0, 212, 255, 0.8); }
+.heatmap-intensity-5 { background: rgba(0, 212, 255, 1); }
